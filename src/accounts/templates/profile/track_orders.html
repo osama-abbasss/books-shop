@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="ht__bradcaump__area bg-image--5">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="bradcaump__inner text-center">
+                  	<h2 class="bradcaump-title">Wishlist</h2>
+                      <nav class="bradcaump-content">
+                        <a class="breadcrumb_item" href="index.html">Home</a>
+                        <span class="brd-separetor">/</span>
+                        <span class="breadcrumb_item active">your orders</span>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="wishlist-area section-padding--lg bg__white">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="wishlist-content">
+                      <form action="#">
+                          <div class="wishlist-table wnro__table table-responsive">
+                              <table>
+                                  <thead>
+                                      <tr>
+                                          <th class="product-remove"> </th>
+                                          <th class="product-name"><span class="nobr">Send To</span></th>
+                                          <th class="product-name"><span class="nobr">address</span></th>
+                                          <th class="product-price"><span class="nobr"> Order Price </span></th>
+                                          <th class="product-stock-stauts"><span class="nobr"> Order Status </span></th>
+                                          {# <th class="product-add-to-cart"></th> #}
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for order in orders %}
+                                      <tr>
+                                        <td class="product-remove"></td>
+                                          <td class="product-name ml-2">{{ order.billing_address.first_name  }} {{ order.billing_address.last_name}}</td>
+                                          <td class="product-name ml-2">{{ order.billing_address.address  }}</td>
+                                          <td class="product-price"><span class="amount">${{ order.total_order_price }}</span></td>
+                                          {% if order.ordered %}
+                                            {% if order.received %}
+                                              <td class="product-stock-status"><span class="wishlist-in-stock"> received </span></td>
+                                            {% else %}
+                                              <td class="product-stock-status"><span class="wishlist-in-stock"> in way </span></td>
+                                            {% endif %}
+                                          {% else %}
+                                            <td class="product-stock-status"><span class="wishlist-in-stock"> not ordered yet </span></td>
+                                          {% endif %}
+
+                                          {# <td class="product-add-to-cart"><a href="#"> Add to Cart</a></td> #}
+                                      </tr>
+                                    {% endfor %}
+
+
+                                  </tbody>
+                              </table>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+{% endblock %}

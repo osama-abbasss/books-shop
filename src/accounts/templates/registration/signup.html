@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+  signup
+{% endblock %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <div class="container my-form">
+      <h2> You are authenticated </h2>
+    </div>
+  {% else %}
+  <div class="ht__bradcaump__area bg-image--6">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="bradcaump__inner text-center">
+                    <h2 class="bradcaump-title">My Account</h2>
+                      <nav class="bradcaump-content">
+                        <a class="breadcrumb_item" href="index.html">Home</a>
+                        <span class="brd-separetor">/</span>
+                        <span class="breadcrumb_item active">My Account</span>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  <section class="my_account_area pt--80 pb--55 bg--white">
+    <div class="col-lg-12 col-12">
+      <div class="my__account__wrapper">
+        <h3 class="account__title">Register</h3>
+        <form method="post">
+          {% csrf_token %}
+          <div class="account__form">
+
+            <div class="input__box">
+              <label>First Name <span>*</span></label>
+              <input type="text" name='first_name'>
+            </div>
+
+            <div class="input__box">
+              <label>Last Name <span>*</span></label>
+              <input type="text" name='last_name'>
+            </div>
+
+            <div class="input__box">
+              <label>Username <span>*</span></label>
+              <input type="text" name='username'>
+            </div>
+
+            <div class="input__box">
+              <label>Email address <span>*</span></label>
+              <input type="email" name='email'>
+            </div>
+
+            <div class="input__box">
+              <label>Password<span>*</span></label>
+              <input type="password" name='password1'>
+            </div>
+
+            <div class="input__box">
+              <label>Password<span>*</span></label>
+              <input type="password" name='password2'>
+            </div>
+            <div class="form__btn">
+              <button type="submit">Register</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+  {% endif %}
+{% endblock %}
